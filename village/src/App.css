@@ -43,14 +43,33 @@ nav {
 }
 
 .smurfs {
-  width: 25%;
+  width: 70%;
+  margin-left: 15%;
+  border: 1px solid red;
 }
 
+ol {
+  display: flex;
+  flex-wrap: wrap;
+}
 li {
   font-size: 20px;
   text-align: left;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 
 h2 {
   color: gray;
+}
+
+.smurf-links {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: dodgerblue;
+  line-height: 30px;
 }

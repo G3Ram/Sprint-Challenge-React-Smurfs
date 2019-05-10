@@ -26,15 +26,19 @@ class Smurfs extends Component {
     return (
       <div className="smurfs">
         <h2>Smurf residents</h2>
-        <ul>
+        <ol>
           {this.props.smurfs.map(smurf => {
             return (
-              <Link to={`/smurf/${smurf.id}`} key={smurf.id}>
+              <Link
+                className="smurf-links"
+                to={`/smurf/${smurf.id}`}
+                key={smurf.id}
+              >
                 <li>{smurf.name}</li>
               </Link>
             );
           })}
-        </ul>
+        </ol>
       </div>
     );
 

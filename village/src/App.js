@@ -22,10 +22,20 @@ class App extends Component {
       .catch(error => console.log(error));
     //     this.setState({ items: data });
   }
+
+  addSmurf = history => {
+    console.log("adding smurfs in app js");
+    axios
+      .get("http://localhost:3333/smurfs")
+      .then(res => this.setState({ smurfs: res.data }))
+      .catch(error => console.log(error));
+    //history.push("/");
+  };
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
   // Notice what your map function is looping over and returning inside of Smurfs.
   // You'll need to make sure you have the right properties on state and pass them down to props.
   render() {
+    console.log("this.state.smurfs is " + this.state.smurfs.length);
     return (
       <div className="App">
         <nav>
@@ -47,7 +57,11 @@ class App extends Component {
         />
         {/* <Smurfs smurfs={this.state.smurfs} /> */}
         <Route exact path="/smurf/:id" component={Smurf} />
-        <Route path="/smurf-form" component={SmurfForm} />
+        {/* <Route path="/smurf-form" component={SmurfForm} /> */}
+        <Route
+          path="/smurf-form"
+          render={props => <SmurfForm {...props} addSmurf={this.addSmurf} />}
+        />
         {/* <SmurfForm /> */}
       </div>
     );
