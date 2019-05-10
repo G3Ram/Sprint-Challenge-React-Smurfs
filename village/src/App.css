@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  border: 1px solid black;
 }
 
 nav {
@@ -14,12 +13,14 @@ nav {
 
 .nav-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #1c5d76;
+  color: dodgerblue;
   font-weight: bold;
   margin-right: 8px;
 }
@@ -29,9 +30,27 @@ nav {
 }
 
 .nav-links a.active {
-  border-bottom: 1px solid #1c5d76;
+  border-bottom: 1px solid dodgerblue;
 }
 
 .smurf-header {
-  color: #1c5d76;
+  color: dodgerblue;
+}
+
+.header-section {
+  width: 75%;
+  align-content: center;
+}
+
+.smurfs {
+  width: 25%;
+}
+
+li {
+  font-size: 20px;
+  text-align: left;
+}
+
+h2 {
+  color: gray;
 }
