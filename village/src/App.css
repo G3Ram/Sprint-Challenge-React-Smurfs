@@ -73,3 +73,34 @@ h2 {
   color: dodgerblue;
   line-height: 30px;
 }
+
+.smurf-form {
+  width: 25%;
+  margin: 5% 35% 0% 35%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.input-text {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 25px;
+  width: 300px;
+  border-radius: 6px;
+}
+
+.smurf-button {
+  color: white;
+  background-color: dodgerblue;
+  width: 150px;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.smurf {
+  border: 1px solid gray;
+  width: 300px;
+  height: 180px;
+  margin-left: 40%;
+}

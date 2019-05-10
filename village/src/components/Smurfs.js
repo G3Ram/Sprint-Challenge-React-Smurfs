@@ -5,24 +5,6 @@ import Smurf from "./Smurf";
 
 class Smurfs extends Component {
   render() {
-    // return (
-    //   <div className="smurfs">
-    //     <ul>
-    //       {this.props.smurfs.map(smurf => {
-    //         return (
-    //           <Smurf
-    //             name={smurf.name}
-    //             id={smurf.id}
-    //             age={smurf.age}
-    //             height={smurf.height}
-    //             key={smurf.id}
-    //           />
-    //         );
-    //       })}
-    //     </ul>
-    //   </div>
-    // );
-    //-----------
     return (
       <div className="smurfs">
         <h2>Smurf residents</h2>
@@ -41,8 +23,6 @@ class Smurfs extends Component {
         </ol>
       </div>
     );
-
-    //--------
   }
 }
 

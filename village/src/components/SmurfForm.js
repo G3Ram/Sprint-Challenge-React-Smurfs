@@ -19,7 +19,6 @@ class SmurfForm extends Component {
     axios
       .post("http://localhost:3333/smurfs", this.state.smurf)
       .then(res => {
-        console.log(res);
         this.props.addSmurf(this.props.history);
       })
       .catch(err => console.log(err));
@@ -42,31 +41,38 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
+      <form onSubmit={this.addSmurf}>
+        <div className="smurf-form">
           <input
+            className="input-text"
             onChange={this.handleInputChange}
             placeholder="name"
             value={this.state.smurf.name}
             name="name"
           />
           <input
+            className="input-text"
             onChange={this.handleInputChange}
             placeholder="age"
             value={this.state.smurf.age}
             name="age"
           />
           <input
+            className="input-text"
             onChange={this.handleInputChange}
             placeholder="height"
             value={this.state.smurf.height}
             name="height"
           />
-          <button type="submit" onClick={this.addSmurf}>
+          <button
+            className="smurf-button"
+            type="submit"
+            onClick={this.addSmurf}
+          >
             Add to the village
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }
