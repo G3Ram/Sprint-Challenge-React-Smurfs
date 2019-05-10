@@ -32,7 +32,7 @@ class App extends Component {
     //history.push("/");
   };
 
-  deleteSmurf = history => {
+  updateSmurf = history => {
     console.log("adding smurfs in app js");
     axios
       .get("http://localhost:3333/smurfs")
@@ -70,7 +70,7 @@ class App extends Component {
         <Route
           exact
           path="/smurf/:id"
-          render={props => <Smurf {...props} deleteSmurf={this.deleteSmurf} />}
+          render={props => <Smurf {...props} updateSmurf={this.updateSmurf} />}
         />
         {/* <Route path="/smurf-form" component={SmurfForm} /> */}
         <Route

@@ -36,13 +36,26 @@ class Smurf extends React.Component {
   handleButtonClick = event => {
     event.preventDefault();
     console.log(event.target.name);
+    const eventName = event.target.name;
     // add code to create the smurf using the api
-    axios
-      .delete(`http://localhost:3333/smurfs/${this.state.smurf.id}`)
-      .then(res => {
-        this.props.deleteSmurf(this.props.history);
-      })
-      .catch(err => console.log(err));
+    if (eventName === "delete") {
+      axios
+        .delete(`http://localhost:3333/smurfs/${this.state.smurf.id}`)
+        .then(res => {
+          this.props.updateSmurf(this.props.history);
+        })
+        .catch(err => console.log(err));
+    } else if (eventName === "update") {
+      axios
+        .put(
+          `http://localhost:3333/smurfs/${this.state.smurf.id}`,
+          this.state.smurf
+        )
+        .then(res => {
+          this.props.updateSmurf(this.props.history);
+        })
+        .catch(err => console.log(err));
+    }
 
     //end of copy paste
     this.setState({
@@ -50,24 +63,64 @@ class Smurf extends React.Component {
     });
   };
 
+  handleInputChange = e => {
+    e.persist();
+    this.setState(prevState => ({
+      smurf: {
+        ...prevState.smurf,
+        [e.target.name]: e.target.value
+      }
+    }));
+  };
+
   render() {
     return (
-      <div className="smurf">
-        <form onSubmit={this.handleButtonClick}>
-          <h3>{this.state.smurf.name}</h3>
+      <form onSubmit={this.handleButtonClick}>
+        <div className="smurf">
+          {/* <h3>{this.state.smurf.name}</h3>
           <strong>{this.state.smurf.height} tall</strong>
-          <p>{this.state.smurf.age} smurf years old</p>
-
-          <button
-            className="smurf-button"
-            type="submit"
-            name="delete"
-            onClick={this.handleButtonClick}
-          >
-            Delete from village
-          </button>
-        </form>
-      </div>
+          <p>{this.state.smurf.age} smurf years old</p> */}
+          <input
+            className="input-text"
+            onChange={this.handleInputChange}
+            placeholder="name"
+            value={this.state.smurf.name}
+            name="name"
+          />
+          <input
+            className="input-text"
+            onChange={this.handleInputChange}
+            placeholder="age"
+            value={this.state.smurf.age}
+            name="age"
+          />
+          <input
+            className="input-text"
+            onChange={this.handleInputChange}
+            placeholder="height"
+            value={this.state.smurf.height}
+            name="height"
+          />
+          <div className="smurf-button-section">
+            <button
+              className="smurf-button"
+              type="submit"
+              name="update"
+              onClick={this.handleButtonClick}
+            >
+              update Smurf
+            </button>
+            <button
+              className="smurf-button"
+              type="submit"
+              name="delete"
+              onClick={this.handleButtonClick}
+            >
+              Delete from village
+            </button>
+          </div>
+        </div>
+      </form>
     );
   }
 }
