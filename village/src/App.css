@@ -39,12 +39,12 @@ nav {
 
 .header-section {
   width: 75%;
-  align-content: center;
+  margin-left: 15%;
 }
 
 .smurfs {
   width: 70%;
-  margin-left: 15%;
+  margin-left: 12%;
   border: 1px solid red;
 }
 

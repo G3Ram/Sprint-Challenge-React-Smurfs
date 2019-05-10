@@ -33,8 +33,9 @@ class Smurf extends React.Component {
       .catch(error => console.log(error));
   }
 
-  deleteSmurf = event => {
+  handleButtonClick = event => {
     event.preventDefault();
+    console.log(event.target.name);
     // add code to create the smurf using the api
     axios
       .delete(`http://localhost:3333/smurfs/${this.state.smurf.id}`)
@@ -52,14 +53,16 @@ class Smurf extends React.Component {
   render() {
     return (
       <div className="smurf">
-        <h3>{this.state.smurf.name}</h3>
-        <strong>{this.state.smurf.height} tall</strong>
-        <p>{this.state.smurf.age} smurf years old</p>
-        <form onSubmit={this.deleteSmurf}>
+        <form onSubmit={this.handleButtonClick}>
+          <h3>{this.state.smurf.name}</h3>
+          <strong>{this.state.smurf.height} tall</strong>
+          <p>{this.state.smurf.age} smurf years old</p>
+
           <button
             className="smurf-button"
             type="submit"
-            onClick={this.deleteSmurf}
+            name="delete"
+            onClick={this.handleButtonClick}
           >
             Delete from village
           </button>
