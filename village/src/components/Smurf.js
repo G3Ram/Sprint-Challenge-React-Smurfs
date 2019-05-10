@@ -57,7 +57,6 @@ class Smurf extends React.Component {
         .catch(err => console.log(err));
     }
 
-    //end of copy paste
     this.setState({
       smurf: { name: "", age: "", height: "" }
     });

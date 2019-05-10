@@ -23,15 +23,6 @@ class App extends Component {
     //     this.setState({ items: data });
   }
 
-  addSmurf = history => {
-    console.log("adding smurfs in app js");
-    axios
-      .get("http://localhost:3333/smurfs")
-      .then(res => this.setState({ smurfs: res.data }))
-      .catch(error => console.log(error));
-    //history.push("/");
-  };
-
   updateSmurf = history => {
     console.log("adding smurfs in app js");
     axios
@@ -45,7 +36,6 @@ class App extends Component {
   // Notice what your map function is looping over and returning inside of Smurfs.
   // You'll need to make sure you have the right properties on state and pass them down to props.
   render() {
-    console.log("this.state.smurfs is " + this.state.smurfs.length);
     return (
       <div className="App">
         <nav>
@@ -57,7 +47,6 @@ class App extends Component {
             <NavLink exact to="/">
               Home
             </NavLink>
-            {/* <NavLink to="/item-list">Shop</NavLink> */}
           </div>
         </nav>
         <Route
@@ -65,19 +54,17 @@ class App extends Component {
           path="/"
           render={props => <Smurfs {...props} smurfs={this.state.smurfs} />}
         />
-        {/* <Smurfs smurfs={this.state.smurfs} /> */}
-        {/* <Route exact path="/smurf/:id" component={Smurf} /> */}
         <Route
           exact
           path="/smurf/:id"
           render={props => <Smurf {...props} updateSmurf={this.updateSmurf} />}
         />
-        {/* <Route path="/smurf-form" component={SmurfForm} /> */}
         <Route
           path="/smurf-form"
-          render={props => <SmurfForm {...props} addSmurf={this.addSmurf} />}
+          render={props => (
+            <SmurfForm {...props} updateSmurf={this.updateSmurf} />
+          )}
         />
-        {/* <SmurfForm /> */}
       </div>
     );
   }
