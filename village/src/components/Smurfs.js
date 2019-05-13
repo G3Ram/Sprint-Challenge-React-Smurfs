@@ -1,32 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import Smurf from './Smurf';
+import Smurf from "./Smurf";
 
 class Smurfs extends Component {
   render() {
     return (
-      <div className="Smurfs">
-        <h1>Smurf Village</h1>
-        <ul>
+      <div className="smurfs">
+        <h2>Smurf residents</h2>
+        <ol>
           {this.props.smurfs.map(smurf => {
             return (
-              <Smurf
-                name={smurf.name}
-                id={smurf.id}
-                age={smurf.age}
-                height={smurf.height}
+              <Link
+                className="smurf-links"
+                to={`/smurf/${smurf.id}`}
                 key={smurf.id}
-              />
+              >
+                <li>{smurf.name}</li>
+              </Link>
             );
           })}
-        </ul>
+        </ol>
       </div>
     );
   }
 }
 
 Smurf.defaultProps = {
- smurfs: [],
+  smurfs: []
 };
 
 export default Smurfs;
